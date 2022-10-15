@@ -1,5 +1,21 @@
 
 # Jellyfin WebOS client
+
+# Dolby TrueHD(Dolby Atmos Lossless)
+org.jellyfin.webos/js/webOs.js
+add this below lines
+<code>getDeviceProfile: function (profileBuilder) {
+                postMessage('AppHost.getDeviceProfile');
+                return profileBuilder({
+                    enableMkvProgressive: false,
+                    enableSsaRender: true,
+                    supportsDolbyAtmos: deviceInfo ? deviceInfo.dolbyAtmos : true,
+                    supportsDolbyVision: deviceInfo ? deviceInfo.dolbyVision : true,
+                    supportsHdr10: deviceInfo ? deviceInfo.hdr10 : true,
+                    supportsTrueHd: deviceInfo ? deviceInfo.dolbyAtmos : true
+                });
+            },
+</code>
 This is a small wrapper around the web interface that the server provides (https://github.com/jellyfin/jellyfin-web) so most of the developement happens there.
 
 # LICENSE
